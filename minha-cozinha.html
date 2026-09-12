@@ -8,17 +8,20 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Cozinha">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#A6503E">
+<meta name="theme-color" content="#161616">
+<meta name="color-scheme" content="light">
 <style>
   :root{
-    --paper:#F3EFE5; --paper-deep:#E7E0CF; --ink:#2B2A25; --ink-soft:#6E6C60; --line:#DBD4C2;
-    --olive:#A6503E; --olive-light:#F2E0DB;
-    --terracotta:#8B4030; --terracotta-light:#EEDBD3;
-    --sage:#5C7250; --sage-light:#E3E8DA;
-    --mustard:#B98826; --mustard-light:#F1E5C8;
-    --blue:#3E6670; --blue-light:#DCE7E8;
-    --card:#FDFBF7;
+    color-scheme: light;
+    --paper:#F1F1EF; --paper-deep:#E3E3E0; --ink:#161616; --ink-soft:#6B6B68; --line:#D4D4D1;
+    --olive:#161616; --olive-light:#E6E6E3;
+    --terracotta:#161616; --terracotta-light:#E2E2DF;
+    --sage:#565654; --sage-light:#E9E9E6;
+    --mustard:#3A3A38; --mustard-light:#E6E6E3;
+    --blue:#6E6C68; --blue-light:#EDEDEB;
+    --card:#FAFAF9;
   }
+  html{background:var(--paper)}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55;font-size:15.5px}
@@ -176,7 +179,7 @@
   .addform-grid .field.wide{grid-column:1 / -1}
   .ing-list{display:flex;flex-direction:column;gap:8px;margin:10px 0 14px}
   .ing-row{display:grid;grid-template-columns:1.4fr .7fr .9fr 1.3fr auto;gap:8px;align-items:center}
-  .ing-row input,.ing-row select{padding:8px 9px;border-radius:6px;border:1px solid var(--line);background:#fff;font-family:inherit;font-size:13px}
+  .ing-row input,.ing-row select{padding:8px 9px;border-radius:6px;border:1px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;font-size:13px}
   @media(max-width:700px){ .addform-grid{grid-template-columns:1fr 1fr} .ing-row{grid-template-columns:1fr 1fr} }
 
   .manage-list{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 28px}
