@@ -226,9 +226,12 @@
     <p class="count-note" id="contagemAcompanhamentos"></p>
 
     <div class="section-title">Salada (opcional)</div>
-    <div class="field">
-      <select id="selSaladaOpcional"></select>
+    <p class="block-note">Itens soltos que a cozinheira deixa lavados e cortados na geladeira — a família monta a salada na hora.</p>
+    <div class="field" style="display:flex;gap:8px;align-items:flex-end;max-width:520px;margin-bottom:10px">
+      <div style="flex:1;margin-bottom:0"><label>Escolha um item de salada</label><select id="selSaladaAdd"></select></div>
+      <button class="btn primary" id="btnAddSalada">Adicionar</button>
     </div>
+    <div class="check-grid" id="chipsSaladas"></div>
 
     <div class="section-title">Preparação extra (opcional)</div>
     <p class="block-note">Um prato à parte da rotina — como uma feijoada, uma marinada, ou qualquer item do banco de opções.</p>
@@ -260,18 +263,6 @@
           <label style="display:flex;align-items:center;gap:8px;font-weight:400;font-size:13.5px;color:var(--ink);padding-top:8px;text-transform:none">
             <input type="checkbox" id="novoCongela" style="width:16px;height:16px"> Congela bem
           </label>
-        </div>
-        <div class="field wide hidden" id="novoPreparoWrap">
-          <label>Modo de preparo (agora) — opcional</label>
-          <input type="text" id="novoPreparo" placeholder="Ex.: Temperar e guardar coberto na geladeira">
-        </div>
-        <div class="field wide hidden" id="novoFinalizacaoWrap">
-          <label>Modo de finalizar (depois) — opcional</label>
-          <input type="text" id="novoFinalizacao" placeholder="Ex.: Assar a 200°C por 25 min">
-        </div>
-        <div class="field wide hidden" id="novoAcompanhamentoWrap">
-          <label>Servir com — opcional</label>
-          <input type="text" id="novoAcompanhamento" placeholder="Ex.: Arroz branco e couve refogada">
         </div>
       </div>
 
@@ -371,45 +362,28 @@
       <section id="acompanhamentos-ref">
         <div class="eyebrow">Banco de opções · 2</div>
         <h2>Acompanhamentos</h2>
-        <p class="lede">Carboidratos, vegetais e molhos — tudo que entra como acompanhamento na seleção do Combinador.</p>
+        <p class="lede">Carboidratos e vegetais — tudo que entra como acompanhamento na seleção do Combinador.</p>
         <div class="table-wrap"><table>
         <tr><th>Grupo</th><th>Opções</th></tr>
         <tr><td><strong>Arroz e grãos</strong></td><td>Arroz branco, integral, à grega, quinoa, nhoque, farofa</td></tr>
         <tr><td><strong>Feijões</strong></td><td>Carioca, preto, vermelho, branco, fradinho, lentilha</td></tr>
-        <tr><td><strong>Raízes e batatas</strong></td><td>Mandioca, batata-doce, batata inglesa, purê de batata, purê de abóbora</td></tr>
+        <tr><td><strong>Raízes e batatas</strong></td><td>Mandioca, batata-doce, batata inglesa, batata-baroa, purês separados</td></tr>
         <tr><td><strong>Verdes</strong></td><td>Brócolis, couve, espinafre, vagem, aspargos</td></tr>
         <tr><td><strong>Crucíferos</strong></td><td>Couve-flor, repolho, rabanete</td></tr>
         <tr><td><strong>Alaranjados</strong></td><td>Abóbora, moranga, cenoura</td></tr>
         <tr><td><strong>Coloridos</strong></td><td>Beterraba, pimentão, tomate, berinjela, abobrinha</td></tr>
-        <tr><td><strong>Outros</strong></td><td>Chuchu, quiabo, milho, cogumelos, legumes grelhados mistos</td></tr>
-        <tr><td><strong>Molhos</strong></td><td>Azeite e limão, iogurte e ervas, mostarda e mel, tahine, vinagrete, chimichurri, gergelim e soja</td></tr>
+        <tr><td><strong>Outros</strong></td><td>Chuchu, quiabo, jiló, milho, cogumelos, legumes grelhados ou assados</td></tr>
         </table></div>
       </section>
 
       <section id="saladas">
         <div class="eyebrow">Banco de opções · 3</div>
         <h2>Saladas</h2>
-        <p class="lede">Prepare perto do consumo — é o item que menos aguenta os dias entre produções. Cebola em salada: sempre roxa.</p>
-        <div class="cols-2">
-          <div class="table-wrap"><table>
-          <tr><th>Folhas</th><th>Complementos</th></tr>
-          <tr><td>Alface</td><td>Tomate, pepino, cenoura</td></tr>
-          <tr><td>Rúcula</td><td>Tomate, manga, beterraba</td></tr>
-          <tr><td>Repolho</td><td>Cenoura, maçã, pepino</td></tr>
-          <tr><td>Agrião</td><td>Beterraba, cenoura, laranja</td></tr>
-          <tr><td>Espinafre cru</td><td>Maçã, tomate, grão-de-bico</td></tr>
-          <tr><td>Mix de folhas</td><td>Tomate, pepino, palmito, sementes</td></tr>
-          </table></div>
-          <div class="table-wrap"><table>
-          <tr><th>Salada pronta</th><th>Composição</th></tr>
-          <tr><td>Colorida</td><td>Alface + rúcula + tomate + cenoura + pepino</td></tr>
-          <tr><td>Crocante</td><td>Repolho + cenoura + pepino + ervas</td></tr>
-          <tr><td>Proteica</td><td>Folhas + grão-de-bico + tomate + pepino</td></tr>
-          <tr><td>Assada</td><td>Abóbora + cebola roxa + beterraba + folhas</td></tr>
-          <tr><td>Brasileira</td><td>Tomate + cebola roxa + pepino + cheiro-verde</td></tr>
-          <tr><td>Tipo tzatziki</td><td>Pepino + iogurte + hortelã</td></tr>
-          </table></div>
-        </div>
+        <p class="lede">Não são combinações prontas — são itens soltos (folhas, legumes) que a cozinheira lava, corta e deixa prontos na geladeira. A família monta a salada na hora, misturando o que quiser. Cebola em salada: sempre roxa.</p>
+        <div class="table-wrap"><table>
+        <tr><th>Folhas</th><th>Legumes e outros</th></tr>
+        <tr><td>Alface, rúcula, agrião, espinafre, couve fininha, repolho fatiado</td><td>Tomate, pepino, cenoura ralada, beterraba, cebola roxa, rabanete, palmito, milho, grão-de-bico, manga</td></tr>
+        </table></div>
       </section>
 
       <section id="coringas">
@@ -471,6 +445,22 @@ async function copiarTexto(texto){
       return ok;
     }catch(err){ return false; }
   }
+}
+
+/* In-page notification — native alert()/confirm() can fail silently on iOS
+   when the app is launched from the Home Screen (standalone display mode). */
+function avisar(mensagem){
+  let banner = document.getElementById('avisoGlobal');
+  if(!banner){
+    banner = document.createElement('div');
+    banner.id = 'avisoGlobal';
+    banner.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;max-width:520px;margin:0 auto;background:var(--ink);color:#fff;padding:14px 18px;border-radius:8px;font-size:13.5px;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,.3)';
+    document.body.appendChild(banner);
+  }
+  banner.textContent = mensagem;
+  banner.style.display = 'block';
+  clearTimeout(banner._t);
+  banner._t = setTimeout(()=>{ banner.style.display='none'; }, 3800);
 }
 
 /* ==================================================================
@@ -585,66 +575,25 @@ let acompanhamentos = [
     {nome:"Abobrinha", qtd:1, un:"unid", cat:"Hortifruti"},
     {nome:"Berinjela", qtd:1, un:"unid", cat:"Hortifruti"},
     {nome:"Cebola", qtd:1, un:"unid", cat:"Hortifruti"}]},
-  {nome:"Molho azeite, limão e ervas", ingredientes:[
-    {nome:"Azeite", qtd:1, un:"garrafa", cat:"Mercearia", despensa:true},
-    {nome:"Limão", qtd:1, un:"unid", cat:"Hortifruti"},
-    {nome:"Ervas frescas", qtd:1, un:"maço", cat:"Hortifruti"}]},
-  {nome:"Molho de iogurte, limão e ervas", ingredientes:[
-    {nome:"Iogurte natural", qtd:1, un:"pote", cat:"Ovos e laticínios"},
-    {nome:"Limão", qtd:1, un:"unid", cat:"Hortifruti"}]},
-  {nome:"Molho mostarda e mel", ingredientes:[
-    {nome:"Mostarda", qtd:1, un:"pote", cat:"Mercearia", despensa:true},
-    {nome:"Mel", qtd:1, un:"pote", cat:"Mercearia", despensa:true}]},
-  {nome:"Molho tahine e limão", ingredientes:[
-    {nome:"Tahine", qtd:1, un:"pote", cat:"Mercearia"},
-    {nome:"Limão", qtd:1, un:"unid", cat:"Hortifruti"}]},
-  {nome:"Chimichurri", ingredientes:[
-    {nome:"Salsinha", qtd:1, un:"maço", cat:"Hortifruti"},
-    {nome:"Alho", qtd:2, un:"dente", cat:"Hortifruti"},
-    {nome:"Vinagre", qtd:1, un:"garrafa", cat:"Mercearia", despensa:true}]},
-  {nome:"Molho de gergelim e soja", ingredientes:[
-    {nome:"Shoyu", qtd:1, un:"garrafa", cat:"Mercearia", despensa:true},
-    {nome:"Gergelim", qtd:1, un:"pacote", cat:"Mercearia"}]},
 ];
 
 let saladas = [
-  {nome:"Alface + tomate + pepino", ingredientes:[
-    {nome:"Alface", qtd:1, un:"pé", cat:"Hortifruti"},
-    {nome:"Tomate", qtd:2, un:"unid", cat:"Hortifruti"},
-    {nome:"Pepino", qtd:1, un:"unid", cat:"Hortifruti"}]},
-  {nome:"Rúcula + manga + tomate", ingredientes:[
-    {nome:"Rúcula", qtd:1, un:"maço", cat:"Hortifruti"},
-    {nome:"Manga", qtd:1, un:"unid", cat:"Hortifruti"},
-    {nome:"Tomate", qtd:2, un:"unid", cat:"Hortifruti"}]},
-  {nome:"Repolho + cenoura + maçã", ingredientes:[
-    {nome:"Repolho", qtd:0.5, un:"unid", cat:"Hortifruti"},
-    {nome:"Cenoura", qtd:1, un:"unid", cat:"Hortifruti"},
-    {nome:"Maçã", qtd:1, un:"unid", cat:"Hortifruti"}]},
-  {nome:"Agrião + beterraba + laranja", ingredientes:[
-    {nome:"Agrião", qtd:1, un:"maço", cat:"Hortifruti"},
-    {nome:"Beterraba", qtd:1, un:"unid", cat:"Hortifruti"},
-    {nome:"Laranja", qtd:1, un:"unid", cat:"Hortifruti"}]},
-  {nome:"Espinafre cru + grão-de-bico + tomate", ingredientes:[
-    {nome:"Espinafre", qtd:1, un:"maço", cat:"Hortifruti"},
-    {nome:"Grão-de-bico (lata)", qtd:1, un:"lata", cat:"Mercearia"},
-    {nome:"Tomate", qtd:2, un:"unid", cat:"Hortifruti"}]},
-  {nome:"Mix de folhas + palmito + sementes", ingredientes:[
-    {nome:"Mix de folhas", qtd:1, un:"pacote", cat:"Hortifruti"},
-    {nome:"Palmito (vidro)", qtd:1, un:"vidro", cat:"Mercearia"},
-    {nome:"Mix de sementes", qtd:1, un:"pacote", cat:"Mercearia"}]},
-  {nome:"Alface + rabanete + cenoura", ingredientes:[
-    {nome:"Alface", qtd:1, un:"pé", cat:"Hortifruti"},
-    {nome:"Rabanete", qtd:100, un:"g", cat:"Hortifruti"},
-    {nome:"Cenoura", qtd:1, un:"unid", cat:"Hortifruti"}]},
-  {nome:"Pepino + iogurte + hortelã", ingredientes:[
-    {nome:"Pepino", qtd:1, un:"unid", cat:"Hortifruti"},
-    {nome:"Iogurte natural", qtd:1, un:"pote", cat:"Ovos e laticínios"},
-    {nome:"Hortelã", qtd:1, un:"maço", cat:"Hortifruti"}]},
-  {nome:"Abóbora + cebola roxa + beterraba + folhas", ingredientes:[
-    {nome:"Abóbora", qtd:300, un:"g", cat:"Hortifruti"},
-    {nome:"Cebola roxa", qtd:1, un:"unid", cat:"Hortifruti"},
-    {nome:"Beterraba", qtd:1, un:"unid", cat:"Hortifruti"},
-    {nome:"Mix de folhas", qtd:1, un:"pacote", cat:"Hortifruti"}]},
+  {nome:"Alface", ingredientes:[{nome:"Alface", qtd:1, un:"pé", cat:"Hortifruti"}]},
+  {nome:"Rúcula", ingredientes:[{nome:"Rúcula", qtd:1, un:"maço", cat:"Hortifruti"}]},
+  {nome:"Agrião", ingredientes:[{nome:"Agrião", qtd:1, un:"maço", cat:"Hortifruti"}]},
+  {nome:"Espinafre", ingredientes:[{nome:"Espinafre", qtd:1, un:"maço", cat:"Hortifruti"}]},
+  {nome:"Couve fininha (crua)", ingredientes:[{nome:"Couve", qtd:1, un:"maço", cat:"Hortifruti"}]},
+  {nome:"Repolho fatiado", ingredientes:[{nome:"Repolho", qtd:0.5, un:"unid", cat:"Hortifruti"}]},
+  {nome:"Tomate", ingredientes:[{nome:"Tomate", qtd:2, un:"unid", cat:"Hortifruti"}]},
+  {nome:"Pepino", ingredientes:[{nome:"Pepino", qtd:1, un:"unid", cat:"Hortifruti"}]},
+  {nome:"Cenoura ralada", ingredientes:[{nome:"Cenoura", qtd:2, un:"unid", cat:"Hortifruti"}]},
+  {nome:"Beterraba (cozida ou crua)", ingredientes:[{nome:"Beterraba", qtd:1, un:"unid", cat:"Hortifruti"}]},
+  {nome:"Cebola roxa fatiada", ingredientes:[{nome:"Cebola roxa", qtd:1, un:"unid", cat:"Hortifruti"}]},
+  {nome:"Rabanete fatiado", ingredientes:[{nome:"Rabanete", qtd:100, un:"g", cat:"Hortifruti"}]},
+  {nome:"Palmito", ingredientes:[{nome:"Palmito (vidro)", qtd:1, un:"vidro", cat:"Mercearia"}]},
+  {nome:"Milho", ingredientes:[{nome:"Milho (lata)", qtd:1, un:"lata", cat:"Mercearia"}]},
+  {nome:"Grão-de-bico cozido", ingredientes:[{nome:"Grão-de-bico (lata)", qtd:1, un:"lata", cat:"Mercearia"}]},
+  {nome:"Manga em cubos", ingredientes:[{nome:"Manga", qtd:1, un:"unid", cat:"Hortifruti"}]},
 ];
 
 let extras = [
@@ -788,7 +737,7 @@ let blocosAtuais = {};
 /* ==================================================================
    PERSISTENCE
    ================================================================== */
-const LS_KEY = 'cozinha_estado_v3';
+const LS_KEY = 'cozinha_estado_v4';
 
 function coletarItensCustom(){
   return {
@@ -960,7 +909,7 @@ function recalcularTudo(){
    SELEÇÃO DA PRODUÇÃO (checklist reativo)
    ================================================================== */
 function ensureProducaoBucket(key){
-  if(!producao[key]) producao[key] = {proteinas:[], acompanhamentos:[], salada:'', extra:''};
+  if(!producao[key]) producao[key] = {proteinas:[], acompanhamentos:[], saladas:[], extra:''};
   return producao[key];
 }
 
@@ -991,8 +940,10 @@ function renderSelecaoProducao(){
   document.getElementById('contagemProteinas').innerHTML = `<b>${bucket.proteinas.length}</b> selecionadas de <b>${cfg.nProteinas}</b> recomendadas`;
   document.getElementById('contagemAcompanhamentos').innerHTML = `<b>${bucket.acompanhamentos.length}</b> selecionados de <b>${cfg.nAcompanhamentos}</b> recomendados`;
 
-  const selSalada = document.getElementById('selSaladaOpcional');
-  selSalada.innerHTML = '<option value="">Nenhuma</option>' + saladas.map(s=>`<option value="${s.nome}" ${bucket.salada===s.nome?'selected':''}>${s.nome}</option>`).join('');
+  const disponiveisS = saladas.filter(s=>!bucket.saladas.includes(s.nome));
+  document.getElementById('selSaladaAdd').innerHTML = disponiveisS.map(s=>`<option value="${s.nome}">${s.nome}</option>`).join('');
+  renderChipsSelecao('chipsSaladas', bucket.saladas, 'saladas', saladas);
+
   const selExtra = document.getElementById('selExtraOpcional');
   selExtra.innerHTML = '<option value="">Nenhuma</option>' + extras.map(x=>`<option value="${x.nome}" ${bucket.extra===x.nome?'selected':''}>${x.nome}</option>`).join('');
 }
@@ -1042,8 +993,12 @@ document.getElementById('btnAddAcompanhamento').addEventListener('click', ()=>{
   persistirEstado();
 });
 
-document.getElementById('selSaladaOpcional').addEventListener('change', (e)=>{
-  ensureProducaoBucket(blocoAtual).salada = e.currentTarget.value;
+document.getElementById('btnAddSalada').addEventListener('click', ()=>{
+  const nome = document.getElementById('selSaladaAdd').value;
+  if(!nome) return;
+  const b = ensureProducaoBucket(blocoAtual);
+  if(!b.saladas.includes(nome)) b.saladas.push(nome);
+  renderSelecaoProducao();
   recalcularListaDeCompras();
   renderProducao();
   persistirEstado();
@@ -1091,7 +1046,7 @@ function recalcularListaDeCompras(){
       const mult = Math.ceil(nRef / b.acompanhamentos.length);
       b.acompanhamentos.forEach(nome=> somar(nome, acompanhamentos, mult));
     }
-    if(b.salada) somar(b.salada, saladas, nRef);
+    if(b.saladas.length) b.saladas.forEach(nome=> somar(nome, saladas, nRef));
     if(b.extra) somar(b.extra, extras, 1);
   });
 
@@ -1190,7 +1145,7 @@ document.getElementById('btnCopiarLista').addEventListener('click', async ()=>{
   const btn = document.getElementById('btnCopiarLista');
   const original = btn.textContent;
   if(ok){ btn.textContent = "Copiado"; setTimeout(()=>btn.textContent = original, 1600); }
-  else{ alert("Não foi possível copiar automaticamente. Toque e segure o texto abaixo para copiar:\n\n"+texto); }
+  else{ avisar("Não foi possível copiar automaticamente. Tente novamente ou copie manualmente."); }
 });
 
 /* ==================================================================
@@ -1200,7 +1155,7 @@ function renderProducao(){
   const container = document.getElementById('producaoConteudo');
   const chaves = Object.keys(producao).filter(k => {
     const b = producao[k];
-    return b.proteinas.length || b.acompanhamentos.length || b.salada || b.extra;
+    return b.proteinas.length || b.acompanhamentos.length || b.saladas.length || b.extra;
   });
   document.getElementById('producaoAcoes').style.display = chaves.length ? 'flex' : 'none';
 
@@ -1232,7 +1187,7 @@ function renderProducao(){
     } else {
       miolo += `<li><b>Acompanhamentos</b> — nenhum selecionado</li>`;
     }
-    if(b.salada) miolo += `<li><b>Salada</b> — ${b.salada} <i>(montar fresca, perto do consumo)</i></li>`;
+    if(b.saladas.length) miolo += `<li><b>Salada</b> — ${b.saladas.join(', ')} <i>(deixar lavado e cortado; montar na hora)</i></li>`;
     miolo += '</ul>';
 
     if(b.extra){
@@ -1257,21 +1212,30 @@ function renderProducao(){
   container.innerHTML = html;
 }
 
-document.getElementById('btnLimparProducao').addEventListener('click', ()=>{
-  const total = Object.values(producao).reduce((s,b)=>s+b.proteinas.length+b.acompanhamentos.length+(b.salada?1:0)+(b.extra?1:0),0);
+document.getElementById('btnLimparProducao').addEventListener('click', (e)=>{
+  const total = Object.values(producao).reduce((s,b)=>s+b.proteinas.length+b.acompanhamentos.length+b.saladas.length+(b.extra?1:0),0);
   if(total === 0) return;
-  if(confirm('Limpar todas as seleções de produção?')){
-    producao = {};
-    renderSelecaoProducao();
-    recalcularListaDeCompras();
-    renderProducao();
-    persistirEstado();
+  const btn = e.currentTarget;
+  if(!btn.dataset.confirmando){
+    btn.dataset.confirmando = '1';
+    const original = btn.textContent;
+    btn.textContent = 'Toque de novo para confirmar';
+    btn._t = setTimeout(()=>{ btn.textContent = original; delete btn.dataset.confirmando; }, 4000);
+    return;
   }
+  clearTimeout(btn._t);
+  delete btn.dataset.confirmando;
+  btn.textContent = 'Limpar';
+  producao = {};
+  renderSelecaoProducao();
+  recalcularListaDeCompras();
+  renderProducao();
+  persistirEstado();
 });
 document.getElementById('btnImprimirProducao').addEventListener('click', ()=> window.print());
 document.getElementById('btnCopiarProducao').addEventListener('click', async ()=>{
   const chaves = Object.keys(producao).filter(k=>{
-    const b = producao[k]; return b.proteinas.length || b.acompanhamentos.length || b.salada || b.extra;
+    const b = producao[k]; return b.proteinas.length || b.acompanhamentos.length || b.saladas.length || b.extra;
   }).sort((a,b)=>a-b);
   const fator = pessoas/2;
   let texto = `Guia de Produção (${pessoas} pessoas)\n`;
@@ -1286,7 +1250,7 @@ document.getElementById('btnCopiarProducao').addEventListener('click', async ()=
     if(b.acompanhamentos.length){
       texto += `Acompanhamentos: ` + b.acompanhamentos.map(n=>`${n} (${medidaPratica(n, acompanhamentos, Math.ceil(nRef/b.acompanhamentos.length))})`).join('; ') + '\n';
     }
-    if(b.salada) texto += `Salada: ${b.salada} (montar fresca)\n`;
+    if(b.saladas.length) texto += `Salada: ${b.saladas.join(', ')} (deixar lavado e cortado)\n`;
     if(b.extra){
       const ex = extras.find(x=>x.nome===b.extra);
       texto += `Extra: ${b.extra}`;
@@ -1299,7 +1263,7 @@ document.getElementById('btnCopiarProducao').addEventListener('click', async ()=
   const btn = document.getElementById('btnCopiarProducao');
   const original = btn.textContent;
   if(ok){ btn.textContent = "Copiado"; setTimeout(()=>btn.textContent = original, 1600); }
-  else{ alert("Não foi possível copiar automaticamente. Toque e segure o texto abaixo para copiar:\n\n"+texto); }
+  else{ avisar("Não foi possível copiar automaticamente. Tente novamente ou copie manualmente."); }
 });
 
 /* ==================================================================
@@ -1329,7 +1293,6 @@ function renderManageList(){
 }
 
 function excluirItem(categoria, nome){
-  if(!confirm(`Remover "${nome}" de ${CATEGORIA_LABEL[categoria]}?`)) return;
   if(!removidos[categoria].includes(nome)) removidos[categoria].push(nome);
   if(categoria==='proteinas') proteinas = proteinas.filter(x=>x.nome!==nome);
   else if(categoria==='acompanhamentos') acompanhamentos = acompanhamentos.filter(x=>x.nome!==nome);
@@ -1339,7 +1302,7 @@ function excluirItem(categoria, nome){
   Object.values(producao).forEach(b=>{
     b.proteinas = b.proteinas.filter(n=>n!==nome);
     b.acompanhamentos = b.acompanhamentos.filter(n=>n!==nome);
-    if(b.salada===nome) b.salada='';
+    b.saladas = b.saladas.filter(n=>n!==nome);
     if(b.extra===nome) b.extra='';
   });
 
@@ -1360,10 +1323,6 @@ document.getElementById('manageCatCtrl').addEventListener('click', (e)=>{
   document.getElementById('manageCatLabel').textContent = CATEGORIA_LABEL[categoriaGerenciamento];
   const mostraCongela = (categoriaGerenciamento==='proteinas' || categoriaGerenciamento==='extras');
   document.getElementById('novoCongelaWrap').style.display = mostraCongela ? '' : 'none';
-  const ehExtra = categoriaGerenciamento==='extras';
-  document.getElementById('novoPreparoWrap').classList.toggle('hidden', !ehExtra);
-  document.getElementById('novoFinalizacaoWrap').classList.toggle('hidden', !ehExtra);
-  document.getElementById('novoAcompanhamentoWrap').classList.add('hidden');
   renderManageList();
 });
 
@@ -1397,7 +1356,7 @@ document.getElementById('btnAddIngredienteRow').addEventListener('click', novaLi
 document.getElementById('btnSalvarNovoItem').addEventListener('click', ()=>{
   const categoria = categoriaGerenciamento;
   const nome = document.getElementById('novoNome').value.trim();
-  if(!nome){ alert('Dê um nome para o item.'); return; }
+  if(!nome){ avisar('Dê um nome para o item.'); return; }
 
   const ingredientes = [];
   document.querySelectorAll('#novoIngredientes .ing-row').forEach(row=>{
@@ -1408,15 +1367,10 @@ document.getElementById('btnSalvarNovoItem').addEventListener('click', ()=>{
     const iCat = row.querySelector('.ing-cat').value;
     ingredientes.push({nome:iNome, qtd:iQtd, un:iUn, cat:iCat});
   });
-  if(!ingredientes.length){ alert('Adicione ao menos um ingrediente.'); return; }
 
   const item = { nome, ingredientes, custom:true };
 
   if(categoria==='extras'){
-    const preparo = document.getElementById('novoPreparo').value.trim();
-    const finalizacao = document.getElementById('novoFinalizacao').value.trim();
-    if(preparo) item.preparo = preparo;
-    if(finalizacao) item.finalizacao = finalizacao;
     item.congela = document.getElementById('novoCongela').checked;
     extras.push(item);
   } else if(categoria==='proteinas'){
@@ -1437,15 +1391,13 @@ document.getElementById('btnSalvarNovoItem').addEventListener('click', ()=>{
 
   document.getElementById('novoNome').value = '';
   document.getElementById('novoCongela').checked = false;
-  const pIn = document.getElementById('novoPreparo'); if(pIn) pIn.value='';
-  const fIn = document.getElementById('novoFinalizacao'); if(fIn) fIn.value='';
   document.getElementById('novoIngredientes').innerHTML = '';
   novaLinhaIngrediente();
 
   const btn = document.getElementById('btnSalvarNovoItem');
   const original = btn.textContent;
-  btn.textContent = 'Item salvo';
-  setTimeout(()=> btn.textContent = original, 1600);
+  btn.textContent = ingredientes.length ? 'Item salvo' : 'Item salvo (sem ingredientes)';
+  setTimeout(()=> btn.textContent = original, 1800);
 });
 
 document.getElementById('btnExportarCustom').addEventListener('click', async ()=>{
@@ -1453,7 +1405,7 @@ document.getElementById('btnExportarCustom').addEventListener('click', async ()=
   const totalCustom = custom.proteinas.length + custom.acompanhamentos.length + custom.saladas.length + custom.extras.length;
   const totalRemovidos = removidos.proteinas.length + removidos.acompanhamentos.length + removidos.saladas.length + removidos.extras.length;
   if(totalCustom===0 && totalRemovidos===0){
-    alert('Nenhum item personalizado ou removido para exportar ainda.');
+    avisar('Nenhum item personalizado ou removido para exportar ainda.');
     return;
   }
   const payload = { itensAdicionados: custom, itensRemovidos: removidos };
@@ -1462,7 +1414,7 @@ document.getElementById('btnExportarCustom').addEventListener('click', async ()=
   const btnExp = document.getElementById('btnExportarCustom');
   const original2 = btnExp.textContent;
   if(ok){ btnExp.textContent = 'Copiado'; setTimeout(()=>btnExp.textContent = original2, 1600); }
-  else{ alert('Não foi possível copiar automaticamente. Toque e segure o texto abaixo para copiar:\n\n'+texto); }
+  else{ avisar('Não foi possível copiar automaticamente. Tente novamente ou copie manualmente.'); }
 });
 
 function renderExtrasRef(){
