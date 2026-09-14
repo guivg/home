@@ -336,7 +336,7 @@
     <main class="main">
       <div class="hero">
         <h1>Banco de Opções</h1>
-        <p class="hero-intro">Catálogo de referência. Para selecionar o que vai preparar, use o Combinador.</p>
+        <p class="hero-intro">Catálogo de referência, somente para consulta — os itens aqui não podem ser editados nesta aba. Para selecionar o que vai preparar, ou para adicionar/remover itens do catálogo, use o Combinador (a seção "Gerenciar Opções" fica no final daquela página).</p>
         <div class="hero-actions">
           <button class="btn primary" onclick="switchView('combinador')">Abrir o Combinador de Pratos</button>
         </div>
@@ -495,6 +495,10 @@ let proteinas = [
   {nome:"Medalhão de boi", congela:false, ingredientes:[
     {nome:"Filé mignon em medalhões", qtd:350, un:"g", cat:"Açougue e peixaria"},
     {nome:"Bacon", qtd:100, un:"g", cat:"Açougue e peixaria"}]},
+  {nome:"Patinho moído com cenoura e batata", congela:true, ingredientes:[
+    {nome:"Carne moída (patinho)", qtd:300, un:"g", cat:"Açougue e peixaria"},
+    {nome:"Cenoura", qtd:2, un:"unid", cat:"Hortifruti"},
+    {nome:"Batata inglesa", qtd:300, un:"g", cat:"Hortifruti"}]},
 ];
 
 let acompanhamentos = [
@@ -542,6 +546,9 @@ let acompanhamentos = [
     {nome:"Couve", qtd:1, un:"maço", cat:"Hortifruti"},
     {nome:"Alho", qtd:2, un:"dente", cat:"Hortifruti"}]},
   {nome:"Vagem refogada", ingredientes:[{nome:"Vagem", qtd:250, un:"g", cat:"Hortifruti"}]},
+  {nome:"Vagem com ovos", ingredientes:[
+    {nome:"Vagem", qtd:250, un:"g", cat:"Hortifruti"},
+    {nome:"Ovos", qtd:3, un:"unid", cat:"Ovos e laticínios"}]},
   {nome:"Vagem com cenoura", ingredientes:[
     {nome:"Vagem", qtd:200, un:"g", cat:"Hortifruti"},
     {nome:"Cenoura", qtd:2, un:"unid", cat:"Hortifruti"}]},
@@ -711,6 +718,13 @@ let extras = [
       {nome:"Batata inglesa", qtd:500, un:"g", cat:"Hortifruti"},
       {nome:"Queijo para gratinar", qtd:100, un:"g", cat:"Ovos e laticínios"}],
     preparo:"Cozinhar e amassar a batata; refogar o frango desfiado temperado.",
+    finalizacao:"Montar em camadas, cobrir com queijo e gratinar no forno a 200°C por 20 min."},
+  {nome:"Escondidinho de mandioca com carne seca", congela:true,
+    ingredientes:[
+      {nome:"Carne seca dessalgada e desfiada", qtd:300, un:"g", cat:"Açougue e peixaria"},
+      {nome:"Mandioca", qtd:500, un:"g", cat:"Hortifruti"},
+      {nome:"Queijo para gratinar", qtd:100, un:"g", cat:"Ovos e laticínios"}],
+    preparo:"Cozinhar e amassar a mandioca; refogar a carne seca dessalgada e desfiada.",
     finalizacao:"Montar em camadas, cobrir com queijo e gratinar no forno a 200°C por 20 min."},
 ];
 
