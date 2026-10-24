@@ -101,6 +101,8 @@ button{cursor:pointer}
 .novo{display:flex;gap:.5rem}
 .novo input{flex:1;min-width:0;background:var(--papel);border:1px solid var(--linha);border-radius:.5rem;padding:.4375rem .75rem}
 .novo button{flex:none}
+.exportar{border-top:1px solid var(--linha);padding-top:1.25rem;margin-top:.5rem}
+.dica{color:var(--suave);font-size:.8125rem;margin:0 0 .75rem}
 </style>
 </head>
 <body>
@@ -146,7 +148,8 @@ button{cursor:pointer}
     {id:'proteinas', nome:'Proteína', singular:'proteína'},
     {id:'saladas', nome:'Salada', singular:'salada'},
     {id:'acompanhamentos', nome:'Acompanhamento', singular:'acompanhamento'},
-    {id:'extras', nome:'Extra', singular:'extra'}
+    {id:'extras', nome:'Extra', singular:'extra'},
+    {id:'preparacoes', nome:'Preparação', singular:'preparação'}
   ];
 
   // Lista inicial. Depois de alterada na aba Opções, vale o que estiver salvo no navegador.
@@ -154,7 +157,8 @@ button{cursor:pointer}
     proteinas: ['Patinho moído','Carne de panela','Sobrecoxa desossada','Filé de frango','Filé de boi','Parmegiana','Frango em cubos','Estrogonofe de frango','Picadinho de filé de boi','Picadinho de filé de frango','Rosbife','Tilápia','Salmão','Moela','Medalhão de frango','Medalhão de boi','Patinho moído com cenoura e batata'],
     saladas: ['Alface','Rúcula','Agrião','Espinafre','Couve fininha (crua)','Repolho fatiado','Tomate','Pepino','Cenoura ralada','Beterraba (cozida ou crua)','Cebola roxa fatiada','Rabanete fatiado','Palmito','Milho','Grão-de-bico cozido','Manga em cubos'],
     acompanhamentos: ['Arroz branco','Arroz integral','Arroz à grega','Feijão carioca','Feijão preto','Lentilha','Mandioca cozida','Purê de mandioca','Batata-doce assada','Purê de batata-doce','Batata inglesa assada','Batata cozida','Batata sauté','Purê de batata inglesa','Purê de batata-baroa','Quinoa','Nhoque','Farofa temperada','Purê de abóbora','Brócolis no vapor','Brócolis salteado','Arroz de brócolis','Couve refogada','Vagem refogada','Vagem com ovos','Vagem com cenoura','Aspargos grelhados','Couve-flor assada','Couve-flor salteada','Repolho refogado','Abóbora assada','Cenoura assada','Berinjela com tomate','Abobrinha grelhada','Pimentão salteado','Chuchu refogado','Jiló refogado','Rabanete salteado','Cogumelos salteados','Quiabo refogado','Milho na manteiga','Legumes grelhados','Legumes assados'],
-    extras: ['Marinada de frango','Bife de boi temperado','Tabuleiro de peixe com legumes','Carne para ensopado temperada','Legumes fatiados para salteado','Kafta moldada crua','Tabuleiro de frango com batatas','Marinada de peixe','Feijoada completa','Tropeiro','Moqueca de peixe','Vaca atolada','Baião de dois','Galinhada','Fricassê de frango','Escondidinho de carne','Escondidinho de frango','Escondidinho de mandioca com carne seca']
+    extras: ['Marinada de frango','Bife de boi temperado','Tabuleiro de peixe com legumes','Carne para ensopado temperada','Legumes fatiados para salteado','Kafta moldada crua','Tabuleiro de frango com batatas','Marinada de peixe','Feijoada completa','Tropeiro','Moqueca de peixe','Vaca atolada','Baião de dois','Galinhada','Fricassê de frango','Escondidinho de carne','Escondidinho de frango','Escondidinho de mandioca com carne seca'],
+    preparacoes: ['Marinada de frango','Bifes temperados para passar','Lasanha montada']
   };
 
   var CHAVE = 'meu-menu-v3';
@@ -181,7 +185,7 @@ button{cursor:pointer}
       }
     }catch(e){}
     CATS.forEach(function(c){
-      if(!Array.isArray(base.opcoes[c.id])) base.opcoes[c.id] = [];
+      if(!Array.isArray(base.opcoes[c.id])) base.opcoes[c.id] = (PADRAO[c.id] || []).slice();
       if(!Array.isArray(base.escolhas[c.id])) base.escolhas[c.id] = [];
     });
     if(typeof base.obs !== 'string') base.obs = '';
@@ -391,8 +395,46 @@ button{cursor:pointer}
       grupo.appendChild(linha);
       telaOpcoes.appendChild(grupo);
     });
+
+    var exportar = el('section', {'class':'exportar'});
+    exportar.appendChild(el('p', {'class':'dica'}, 'Copie as listas e cole no chat com o Claude para que elas passem a valer em todos os aparelhos.'));
+    var copiarOp = el('button', {'type':'button','class':'botao'}, 'Copiar opções');
+    var avisoOp = el('p', {'class':'aviso','role':'status'});
+    copiarOp.addEventListener('click', function(){
+      copiarTexto(textoOpcoes(),
+        function(){ avisoOp.textContent = 'Opções copiadas. Agora é só colar no chat.'; },
+        function(){ avisoOp.textContent = 'Não foi possível copiar. Tente de novo.'; });
+    });
+    exportar.appendChild(copiarOp);
+    exportar.appendChild(avisoOp);
+    telaOpcoes.appendChild(exportar);
+
     if(focarEm){ var f = document.getElementById('novo-' + focarEm); if(f) f.focus(); }
     if(campoFoco){ campoFoco.focus(); campoFoco.select(); }
+  }
+
+  function textoOpcoes(){
+    var linhas = ['OPÇÕES DO MEU MENU'];
+    CATS.forEach(function(c){
+      linhas.push('');
+      linhas.push(c.nome + ' (' + estado.opcoes[c.id].length + '):');
+      estado.opcoes[c.id].forEach(function(n){ linhas.push('- ' + n); });
+    });
+    return linhas.join('\n');
+  }
+  function copiarTexto(texto, ok, falha){
+    function reserva(){
+      var t = el('textarea'); t.value = texto; t.setAttribute('readonly','');
+      t.style.position = 'fixed'; t.style.top = '-9999px';
+      document.body.appendChild(t); t.select(); t.setSelectionRange(0, texto.length);
+      var deu = false;
+      try{ deu = document.execCommand('copy'); }catch(e){}
+      document.body.removeChild(t);
+      if(deu) ok(); else falha();
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(texto).then(ok, reserva);
+    } else { reserva(); }
   }
 
   /* ---------- Navegação ---------- */
